@@ -18,11 +18,12 @@ var qrapp = angular.module('starter', ['ionic','ngCordova'])
   });
 })
 
-
 qrapp.controller("ScannerController", function($scope,$cordovaBarcodeScanner){
   $scope.scanBarcode = function(){
     $cordovaBarcodeScanner.scan().then(function(imageData){
-      alert(imageData.text);
+      // alert(imageData.text);
+      $scope.result = "Result: " + imageData.text + "\n" +
+                      "Format: " + imageData.format + "\n";
       console.log("format " + imageData.format);
     }, function(error){
       console.log("an error happened" + error);
